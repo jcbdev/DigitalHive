@@ -1,6 +1,6 @@
 using System;
 
-namespace api
+namespace DigitalHive.Api
 {
     public class WeatherForecast
     {
