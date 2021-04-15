@@ -18,10 +18,10 @@ namespace DigitalHive.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            return null;
-        }
+        // [HttpGet]
+        // public IEnumerable<WeatherForecast> Get()
+        // {
+        //     return null;
+        // }
     }
 }

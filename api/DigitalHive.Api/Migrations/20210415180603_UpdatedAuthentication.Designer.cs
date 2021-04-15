@@ -3,15 +3,17 @@ using System;
 using DigitalHive.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DigitalHive.Api.Migrations
 {
     [DbContext(typeof(DigitalHiveContext))]
-    partial class DigitalHiveContextModelSnapshot : ModelSnapshot
+    [Migration("20210415180603_UpdatedAuthentication")]
+    partial class UpdatedAuthentication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
