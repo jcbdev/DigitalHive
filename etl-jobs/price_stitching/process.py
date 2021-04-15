@@ -1,4 +1,6 @@
 import pandas as pd
+import os
+import requests
 
 def load_timeseries():
   xls = pd.ExcelFile('../data/InputRawData.xlsx')
@@ -11,4 +13,8 @@ def rolling_window(df, window):
   return df
 
 def ingest_rolling_data(df):
-  pass
+  api_address = os.environ['API']
+  json = df.to_json(orient='records')
+  headers = { 'Accept' : 'application/json', 'Content-Type' : 'application/json'}
+  r = requests.post(f"{api_address}/Data/IngestTimeSeries", data=json, headers=headers)
+  return json

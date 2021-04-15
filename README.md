@@ -9,7 +9,7 @@ Expected:
 	•	The approach and design decisions made during the development of the solution will be discussed in the next steps of the process.
 	•	Code and Design should be flexible to allow any future commodities, models and metrics.
 
-Python 
+Python
 	•	Price stitching program (Use InputRawData.xlsx):
 	•	As the price of monthly contracts are different, stitch the prices to create a smooth continuous curve. This can be achieved in multiple methods. We are only interested in producing a smooth curve of Contract 1. Contract 2 data is provided to use it for generating the continuous timeseries of Contract1
 	•	One of the methods you could use is below. You can use many other methods to produce a smooth curve. Below is just an e.g. of one of the methods. 

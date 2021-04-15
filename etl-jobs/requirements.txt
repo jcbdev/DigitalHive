@@ -8,3 +8,5 @@ datatest
 pylint
 openpyxl
 python-dotenv
+requests
+requests-mock
