@@ -7,3 +7,4 @@ pytest-watch
 datatest
 pylint
 openpyxl
+python-dotenv
