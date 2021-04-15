@@ -31,7 +31,9 @@ namespace DigitalHive.Api
         {
 
             services.AddDbContext<DigitalHiveContext>(options =>
-                options.UseNpgsql(Configuration["ConnectionStrings:DefaultConnection"]));
+                options.UseNpgsql(Configuration["ConnectionStrings:DefaultConnection"], (builder) => {
+                    builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(1), null);
+                }));
 
             services.AddControllers();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));

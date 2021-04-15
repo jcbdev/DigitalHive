@@ -11,6 +11,6 @@ using System.Collections.Generic;
 
         RegisterResponse Register(RegisterRequest model);
 
-        void Clear();
+        void ClearUser(string username);
     }
  }

@@ -17,6 +17,12 @@ export const register = async (username: string, password: string, role:string) 
   });
 };
 
+export const clearuser = async (username: string) => {
+  return instance.post(API_URL + "clear", {
+    username,
+  });
+};
+
 export const login = (username: string, password: string) => {
   return instance
     .post(API_URL + "authenticate", {

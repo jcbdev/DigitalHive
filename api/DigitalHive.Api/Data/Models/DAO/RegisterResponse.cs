@@ -11,7 +11,7 @@ namespace DigitalHive.Api.Data.Models.DAO
     {
       Id = user.ID;
       Username = user.Username;
-      Role = Role;
+      Role = user.Role;
     }
   }
 }

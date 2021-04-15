@@ -78,8 +78,8 @@ namespace DigitalHive.Api.Data {
             return new RegisterResponse(user);
         }
 
-        public void Clear() {
-            _repository.ClearUsers();
+        public void ClearUser(string username) {
+            _repository.ClearUsers(username);
         }
     }
 }

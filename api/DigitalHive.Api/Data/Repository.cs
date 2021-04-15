@@ -31,8 +31,9 @@ namespace DigitalHive.Api.Data {
       return _db.Set<User>();
     }
 
-    public void ClearUsers() {
-      _db.Users.RemoveRange(_db.Users.ToList());
+    public void ClearUsers(string username) {
+      _db.Users.RemoveRange(_db.Users.Where(u => u.Username == username));
+      _db.SaveChanges();
     }
 
     public void InsertTimeSeries(IEnumerable<TimeSeriesReport> timeSeries)

@@ -49,9 +49,9 @@ namespace DigitalHive.Api.Controllers
 
     [HttpPost]
     [Route("clear")]
-    public IActionResult ClearUsers()
+    public IActionResult ClearUsers(ClearUserRequest model)
     {
-      _userService.Clear();
+      _userService.ClearUser(model.Username);
 
       return Ok();
     }
