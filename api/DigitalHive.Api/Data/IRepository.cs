@@ -7,6 +7,7 @@ namespace DigitalHive.Api.Data {
     public IEnumerable<User> ListUsers();
     public User GetUser(string username);
     public User GetUserById(int id);
+    public void ClearUsers();
     public void InsertTimeSeries(IEnumerable<TimeSeriesReport> timeSeries);
     public IEnumerable<TimeSeriesReport> GetTimeSeries();
   }

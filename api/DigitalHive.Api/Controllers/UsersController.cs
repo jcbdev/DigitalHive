@@ -36,6 +36,7 @@ namespace DigitalHive.Api.Controllers
     }
 
     [HttpPost]
+    [Route("register")]
     public IActionResult RegisterUser(RegisterRequest model)
     {
       var response = _userService.Register(model);
@@ -44,6 +45,15 @@ namespace DigitalHive.Api.Controllers
         return BadRequest(new { message = "Cannot register user" });
 
       return Ok(response);
+    }
+
+    [HttpPost]
+    [Route("clear")]
+    public IActionResult ClearUsers()
+    {
+      _userService.Clear();
+
+      return Ok();
     }
   }
 }

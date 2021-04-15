@@ -10,5 +10,7 @@ using System.Collections.Generic;
         User GetById(int id);
 
         RegisterResponse Register(RegisterRequest model);
+
+        void Clear();
     }
  }

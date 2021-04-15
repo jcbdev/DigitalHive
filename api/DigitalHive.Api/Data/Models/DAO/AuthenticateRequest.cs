@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DigitalHive.Api.Data.Models
+namespace DigitalHive.Api.Data.Models.DAO
 {
     public class AuthenticateRequest
     {

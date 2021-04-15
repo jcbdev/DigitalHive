@@ -1,8 +1,20 @@
+import 'react-app-polyfill/ie11'; // For IE 11 support
+import 'react-app-polyfill/stable';
+import 'core-js';
+import './polyfill'
 import React from 'react';
+import { config } from 'dotenv';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { icons } from './assets/icons'
+
+(React as any).icons = icons
+
+config({
+  path: '../.env'
+})
 
 ReactDOM.render(
   <React.StrictMode>

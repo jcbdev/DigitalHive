@@ -31,6 +31,10 @@ namespace DigitalHive.Api.Data {
       return _db.Set<User>();
     }
 
+    public void ClearUsers() {
+      _db.Users.RemoveRange(_db.Users.ToList());
+    }
+
     public void InsertTimeSeries(IEnumerable<TimeSeriesReport> timeSeries)
     {
       throw new System.NotImplementedException();
