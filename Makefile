@@ -10,12 +10,10 @@ run:
 	${MAKE} -j 3 run-api run-dashboard
 
 db-up:
-	cd infrastructure
-	docker-compose up -d
+	cd infrastructure && docker-compose up -d
 
 db-down:
-	cd infrastructure
-	docker-compose down --volumes
+	cd infrastructure && docker-compose down --volumes
 
 setup:
 	cd api && dotnet restore
