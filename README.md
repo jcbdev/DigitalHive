@@ -16,6 +16,8 @@ Make sure you have all dependencies installed
 
 ### Setup
 
+NOTE: This has only been tested on macosx
+
 1) Run docker container for postgres database
 ```
 make db-up
@@ -29,6 +31,11 @@ make setup
 3) Run tests
 ```
 make test
+```
+
+4) Copy env.development to .env
+```
+cp env.development .env
 ```
 
 4) Run ETL ingests and data seeding
