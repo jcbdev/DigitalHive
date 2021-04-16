@@ -36,6 +36,7 @@ const Login = () => {
                       console.log('Submit')
                       let user = await login(values.username, values.password);
                       if (user) {
+                        console.log(user);
                         history.push("/dashboard");
                       }
                       // setTimeout(() => {

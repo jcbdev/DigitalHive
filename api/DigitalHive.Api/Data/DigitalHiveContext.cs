@@ -11,6 +11,7 @@ namespace DigitalHive.Api.Data {
 
         public DbSet<User> Users { get; set; }
         public DbSet<TimeSeriesReport> TimeSeriesReports { get; set; }
+        public DbSet<CommodityModel> CommodityModels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

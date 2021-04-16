@@ -27,14 +27,16 @@ export const clearuser = async (username: string) => {
   });
 };
 
-export const login = (username: string, password: string) => {
+export const login = async (username: string, password: string): Promise<any> => {
   return instance
     .post(API_URL + "authenticate", {
       username,
       password,
     })
     .then((response) => {
-      if (response.data.accessToken) {
+      console.log(response)
+      if (response.data.token) {
+        console.log('setting token')
         localStorage.setItem("user", JSON.stringify(response.data));
       }
 

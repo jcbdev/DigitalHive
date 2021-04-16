@@ -22,11 +22,15 @@ const AvailableRoutes = () => {
             {!user && (<> 
               <Route exact path="/" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route >
+                <Redirect to="/" />
+              </Route> 
               </>
             )}
             {user && (<> 
               <Route path="/dashboard" component={TheLayout} />
-              <Route path="/">
+              <Route exact path="/" component={TheLayout} />
+              <Route >
                 <Redirect to="/dashboard" />
               </Route> 
               </>

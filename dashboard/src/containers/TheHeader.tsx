@@ -17,12 +17,10 @@ import routes from '../routes'
 
 import { 
   TheHeaderDropdown,
-  TheHeaderDropdownMssg,
-  TheHeaderDropdownNotif,
-  TheHeaderDropdownTasks
 }  from './index'
 
 const TheHeader = () => {
+  // const { user } = useUser();
   const sidebarShow = true;
 
   const toggleSidebar = () => {
@@ -35,7 +33,7 @@ const TheHeader = () => {
 
   return (
     <CHeader withSubheader>
-      <CToggler
+      {/* <CToggler
         inHeader
         className="ml-md-3 d-lg-none"
         onClick={toggleSidebarMobile}
@@ -44,13 +42,13 @@ const TheHeader = () => {
         inHeader
         className="ml-3 d-md-down-none"
         onClick={toggleSidebar}
-      />
+      /> */}
       <CHeaderBrand className="mx-auto d-lg-none" to="/">
         <CIcon name="logo" height="48" alt="Logo"/>
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
-        <CHeaderNavItem className="px-3" >
+        {/* <CHeaderNavItem className="px-3" >
           <CHeaderNavLink to="/dashboard">Dashboard</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem  className="px-3">
@@ -58,17 +56,14 @@ const TheHeader = () => {
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">
           <CHeaderNavLink>Settings</CHeaderNavLink>
-        </CHeaderNavItem>
+        </CHeaderNavItem> */}
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        <TheHeaderDropdownNotif/>
-        <TheHeaderDropdownTasks/>
-        <TheHeaderDropdownMssg/>
         <TheHeaderDropdown/>
       </CHeaderNav>
 
-      <CSubheader className="px-3 justify-content-between">
+      {/* <CSubheader className="px-3 justify-content-between">
         <CBreadcrumbRouter 
           className="border-0 c-subheader-nav m-0 px-0 px-md-3" 
           routes={routes} 
@@ -88,7 +83,7 @@ const TheHeader = () => {
               <CIcon name="cil-settings" alt="Settings" />&nbsp;Settings
             </CLink>
           </div>
-      </CSubheader>
+      </CSubheader> */}
     </CHeader>
   )
 }

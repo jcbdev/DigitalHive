@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from price_stitching import load_timeseries, rolling_window, ingest_rolling_data
+from model_results import apply_calculations, ingest_models, load_model_results
 from dotenv import load_dotenv
 
 if __name__ == '__main__':
   load_dotenv("../.env")
-  df = load_timeseries()
-  df = rolling_window(df, '15D')
-  
-  print(df)
+  df = load_model_results()
+  df = apply_calculations(df)
+  ingest_models(df)
+  # print(df)

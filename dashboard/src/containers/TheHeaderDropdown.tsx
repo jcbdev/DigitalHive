@@ -8,20 +8,25 @@ import {
   CImg
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { useUser } from '../providers/UserProvider';
+import { useHistory } from 'react-router';
 
 const TheHeaderDropdown = () => {
+  const { user, logout } = useUser();
+  const history = useHistory();
+
   return (
     <CDropdown
       inNav
       className="c-header-nav-items mx-2"
-      direction="down"
+      // direction="down"
     >
       <CDropdownToggle className="c-header-nav-link" caret={false}>
         <div className="c-avatar">
           <CImg
             src={'avatars/6.jpg'}
             className="c-avatar-img"
-            alt="admin@bootstrapmaster.com"
+            alt={user?.username}
           />
         </div>
       </CDropdownToggle>
@@ -34,7 +39,7 @@ const TheHeaderDropdown = () => {
         >
           <strong>Account</strong>
         </CDropdownItem>
-        <CDropdownItem>
+        {/* <CDropdownItem>
           <CIcon name="cil-bell" className="mfe-2" />
           Updates
           <CBadge color="info" className="mfs-auto">42</CBadge>
@@ -79,10 +84,13 @@ const TheHeaderDropdown = () => {
           Projects
           <CBadge color="primary" className="mfs-auto">42</CBadge>
         </CDropdownItem>
-        <CDropdownItem divider />
-        <CDropdownItem>
+        <CDropdownItem divider /> */}
+        <CDropdownItem onClick={() => { 
+          logout();
+          history.push('/')
+          }}>
           <CIcon name="cil-lock-locked" className="mfe-2" />
-          Lock Account
+          Log Out
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

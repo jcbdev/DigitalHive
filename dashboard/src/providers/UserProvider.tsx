@@ -22,6 +22,7 @@ export const UserProvider: React.FC<{}> = ({children}) => {
 
   React.useEffect(() => {
     setUser(getCurrentUser());
+    console.log(getCurrentUser())
   }, []);
 
   const register = async (username: string, password: string, role: string): Promise<User> => {
@@ -32,7 +33,6 @@ export const UserProvider: React.FC<{}> = ({children}) => {
 
   const login = async (username: string, password: string): Promise<User> => {
     let response = await loginService(username, password);
-    console.log(response)
     if (response.message) throw new Error('Could not login');
     setUser(response);
     return response;

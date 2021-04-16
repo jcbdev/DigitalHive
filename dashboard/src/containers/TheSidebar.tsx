@@ -22,7 +22,7 @@ const TheSidebar = () => {
   return (
     <CSidebar
       show={show}
-      onShowChange={(val) => {}}
+      onShowChange={() => {}}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
         <CIcon

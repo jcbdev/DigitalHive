@@ -18,6 +18,6 @@ def test_apply_rolling_window():
 def test_should_call_api(requests_mock):
   df = util.testing.makeDataFrame()
   os.environ['API'] = 'https://localhost:5001'
-  requests_mock.post(f'https://localhost:5001/Data/IngestTimeSeries', status_code=404)
+  requests_mock.post(f'https://localhost:5001/Data/timeseries', status_code=200)
   json = ingest_rolling_data(df)
-  assert json == 'test'
+  assert json['rows'] is not None
