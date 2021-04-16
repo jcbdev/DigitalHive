@@ -72,7 +72,7 @@ const Charts = () => {
       }
       const dataSet = chartData.datasets.find((s: any) => s.label === setTitle);
       labels[moment(row.date).format('DD MMM YY')] = {};
-      dataSet.data.push(row.pnlDaily);
+      dataSet.data.push(row.position);
     }
     chartData.labels = Object.keys(labels);
 
@@ -126,7 +126,7 @@ const Charts = () => {
       
       <CCard width={'100%'}>
         <CCardHeader>
-          Daily PnL
+          Position
         </CCardHeader>
         <CCardBody>
           <CChartLine

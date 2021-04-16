@@ -19,16 +19,15 @@ def load_model_results():
 
 def apply_calculations(df):
   # Pnl YTD
-  df_grouped = df.groupby([pd.Grouper(freq='A'), 'model', 'commodity'])
-  # df["pnlYtd"] = df_grouped['Pnl Daily'].transform(lambda x: x/x.iloc[0]-1.0)
-  df["pnlYtd"] = df_grouped['Pnl Daily'].transform(lambda x: x.cumsum())
+  df_grouped = df.groupby([pd.Grouper(freq='YS'), 'model', 'commodity'])
+  df["pnlYtd"] = df_grouped['Pnl Daily'].cumsum()
 
   # Pnl LTD
   df_grouped = df.groupby(['model', 'commodity'])
-  df["pnlLtd"] = df_grouped['Pnl Daily'].transform(lambda x: x.cumsum())
+  df["pnlLtd"] = df_grouped['Pnl Daily'].cumsum()
 
   # Drawdown YTD
-  df_grouped = df.groupby(['model', 'commodity'])
+  df_grouped = df.groupby([pd.Grouper(freq='YS'), 'model', 'commodity'])
   df["mddYtd"] = df_grouped['Pnl Daily'].transform(lambda x: (x.cummin() - x.cummax()) / x.cummax())
 
   return df
@@ -40,6 +39,5 @@ def ingest_models(df):
   report = json.loads(df.to_json(orient='table', index=True))
   reportOutput = json.dumps({'rows': report['data']})
   headers = { 'Accept' : 'application/json', 'Content-Type' : 'application/json'}
-  # print(reportOutput)
   r = requests.post(f"{api_address}/Data/models", data=reportOutput, headers=headers, verify=False)
   return {'rows': report['data']}

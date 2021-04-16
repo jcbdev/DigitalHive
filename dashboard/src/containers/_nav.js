@@ -21,7 +21,37 @@ const _nav =  {
       _tag: 'CSidebarNavItem',
       name: 'Daily PnL',
       to: '/dailypnl',
-      icon: 'cil-drop',
+      icon: <CIcon name="cil-chart-line" customClasses="c-sidebar-nav-icon"/>,
+    },
+    {
+      _tag: 'CSidebarNavItem',
+      name: 'PnL YTD',
+      to: '/pnlytd',
+      icon: <CIcon name="cil-chart-line" customClasses="c-sidebar-nav-icon"/>,
+    },
+    {
+      _tag: 'CSidebarNavItem',
+      name: 'PnL LTD',
+      to: '/pnlltd',
+      icon: <CIcon name="cil-chart-line" customClasses="c-sidebar-nav-icon"/>,
+    },
+    {
+      _tag: 'CSidebarNavItem',
+      name: 'Drawdown YTD',
+      to: '/drawdown',
+      icon: <CIcon name="cil-chart-line" customClasses="c-sidebar-nav-icon"/>,
+    },
+    {
+      _tag: 'CSidebarNavItem',
+      name: 'Position',
+      to: '/position',
+      icon: <CIcon name="cil-chart-line" customClasses="c-sidebar-nav-icon"/>,
+    },
+    {
+      _tag: 'CSidebarNavItem',
+      name: 'Price',
+      to: '/price',
+      icon: <CIcon name="cil-chart-line" customClasses="c-sidebar-nav-icon"/>,
     },
   ],
   Developer: [
@@ -46,6 +76,16 @@ const _nav =  {
         color: 'info',
         text: 'NEW',
       }
+    },
+    {
+      _tag: 'CSidebarNavTitle',
+      _children: ['Reports']
+    },
+    {
+      _tag: 'CSidebarNavItem',
+      name: 'Daily PnL',
+      to: '/dailypnl',
+      icon: <CIcon name="cil-chart-line" customClasses="c-sidebar-nav-icon"/>,
     },
   ]
   

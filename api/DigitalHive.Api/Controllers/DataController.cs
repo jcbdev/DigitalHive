@@ -73,8 +73,6 @@ namespace DigitalHive.Api.Controllers
         [Route("models/{model?}/{commodity?}")]
         public IActionResult GetCommodityModels([FromQuery] string model, [FromQuery] string commodity)
         {
-            Console.WriteLine($"Model: {model}");
-            Console.WriteLine($"Commodity: {commodity}");
             var commodityModels = _repository.GetCommodityModels(model, commodity);
             var response = new GetCommodityModelsResponse(commodityModels);
             return Ok(response);
