@@ -25,11 +25,12 @@ namespace DigitalHive.Api.Data {
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _repository.GetUser(model.Username);
-            if (user.Password != model.Password) return null;
-
+            var user = _repository.GetUser(model.username);
             // return null if user not found
             if (user == null) return null;
+            
+            if (user.Password != model.password) return null;
+
 
             // authentication successful so generate jwt token
             var token = generateJwtToken(user);
@@ -67,9 +68,9 @@ namespace DigitalHive.Api.Data {
         public RegisterResponse Register(RegisterRequest model)
         {
             var user = _repository.RegisterUser(new User(){
-                Username = model.Username,
-                Password = model.Password,
-                Role = model.Role
+                Username = model.username,
+                Password = model.password,
+                Role = model.role
             });
 
             // return null if user not found

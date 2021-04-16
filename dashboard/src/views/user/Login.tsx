@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import {
   CButton,
   CCard,
@@ -15,9 +15,13 @@ import {
   CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { Formik } from 'formik';
+import { Field, Formik } from 'formik';
+import { useUser } from '../../providers/UserProvider';
 
 const Login = () => {
+  const { login } = useUser();
+  const history = useHistory();
+  
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
@@ -28,12 +32,16 @@ const Login = () => {
                 <CCardBody>
                   <Formik 
                     initialValues={{username: '', password: ''}}
-                    onSubmit={(values, { setSubmitting }) => {
+                    onSubmit={async (values, { setSubmitting }) => {
                       console.log('Submit')
-                      setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                      }, 400);
+                      let user = await login(values.username, values.password);
+                      if (user) {
+                        history.push("/dashboard");
+                      }
+                      // setTimeout(() => {
+                      //   alert(JSON.stringify(values, null, 2));
+                      //   setSubmitting(false);
+                      // }, 400);
                     }}
                   >
                     {({isSubmitting, submitForm}) => (
@@ -46,7 +54,11 @@ const Login = () => {
                               <CIcon name="cil-user" />
                             </CInputGroupText>
                           </CInputGroupPrepend>
-                          <CInput type="text" placeholder="Username" autoComplete="username" disabled={isSubmitting}/>
+                          <Field name="username">
+                            {({field}: {field: any}) => (
+                              <CInput {...field} type="text" placeholder="Username" autoComplete="username" disabled={isSubmitting}/>
+                            )}
+                          </Field>
                         </CInputGroup>
                         <CInputGroup className="mb-4">
                           <CInputGroupPrepend>
@@ -54,7 +66,11 @@ const Login = () => {
                               <CIcon name="cil-lock-locked" />
                             </CInputGroupText>
                           </CInputGroupPrepend>
-                          <CInput type="password" placeholder="Password" autoComplete="current-password" disabled={isSubmitting}/>
+                          <Field name="password">
+                            {({field}: {field: any}) => (
+                              <CInput {...field} type="text" placeholder="Password" autoComplete="password" disabled={isSubmitting}/>
+                            )}
+                          </Field>
                         </CInputGroup>
                         <CRow>
                           <CCol xs="6">

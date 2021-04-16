@@ -5,12 +5,12 @@ namespace DigitalHive.Api.Data.Models.DAO
     public class RegisterRequest
     {
         [Required]
-        public string Username { get; set; }
+        public string username { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public string password { get; set; }
 
         [Required]
-        public string Role { get; set; }
+        public string role { get; set; }
     }
 }

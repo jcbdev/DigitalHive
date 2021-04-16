@@ -30,6 +30,16 @@ namespace DigitalHive.Api
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .WithOrigins("https://localhost:3000", "http://localhost:5000", "https://localhost:5001", "http://localhost:3000", "https://127.0.0.1:3000")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                     );
+            });
             services.AddDbContext<DigitalHiveContext>(options =>
                 options.UseNpgsql(Configuration["ConnectionStrings:DefaultConnection"], (builder) => {
                     builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(1), null);
@@ -48,6 +58,8 @@ namespace DigitalHive.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseOptions();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -60,17 +72,14 @@ namespace DigitalHive.Api
             app.UseRouting();
 
             // global cors policy
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors("CorsPolicy");
 
             // app.UseAuthorization();
             app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers(); //.RequireCors("MyPolicy");
             });
         }
     }

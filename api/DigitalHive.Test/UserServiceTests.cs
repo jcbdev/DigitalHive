@@ -37,8 +37,8 @@ namespace DigitalHive.Test
       var _userService = new UserService(options, repositoryMock.Object);
       var result = _userService.Authenticate(new AuthenticateRequest()
       {
-        Username = "testuser",
-        Password = "TestPassword"
+        username = "testuser",
+        password = "TestPassword"
       });
       Assert.That(result, Is.Not.Null);
       Assert.That(result.Id, Is.EqualTo(1));
@@ -64,8 +64,8 @@ namespace DigitalHive.Test
       var _userService = new UserService(options, repositoryMock.Object);
       var result = _userService.Authenticate(new AuthenticateRequest()
       {
-        Username = "testuser",
-        Password = "BadPassword"
+        username = "testuser",
+        password = "BadPassword"
       });
       Assert.That(result, Is.Null);
     }
@@ -148,9 +148,9 @@ namespace DigitalHive.Test
       });
       var _userService = new UserService(options, repositoryMock.Object);
       var result = _userService.Register(new RegisterRequest() {
-        Username = "newuser",
-        Password = "newpassword",
-        Role = "Manager",
+        username = "newuser",
+        password = "newpassword",
+        role = "Manager",
       });
       Assert.That(result.Id, Is.EqualTo(1));
     }

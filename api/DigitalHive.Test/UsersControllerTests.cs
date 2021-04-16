@@ -62,8 +62,8 @@ namespace DigitalHive.Test
 
       var userController = new UsersController(userServiceMock.Object);
       var result = userController.Authenticate(new AuthenticateRequest() {
-        Username = "testuser",
-        Password = "somethingsomething"
+        username = "testuser",
+        password = "somethingsomething"
       });
       Assert.That(GetHttpStatusCode(result), Is.EqualTo(HttpStatusCode.OK));
       Assert.That(GetValue<AuthenticateResponse>(result).Id, Is.EqualTo(1));
@@ -82,9 +82,9 @@ namespace DigitalHive.Test
 
       var userController = new UsersController(userServiceMock.Object);
       var result = userController.RegisterUser(new RegisterRequest() {
-        Username = "testuser",
-        Password = "somethingsomething",
-        Role = "testR0le"
+        username = "testuser",
+        password = "somethingsomething",
+        role = "testR0le"
       });
       Assert.That(GetHttpStatusCode(result), Is.EqualTo(HttpStatusCode.OK));
       Assert.That(GetValue<RegisterResponse>(result).Id, Is.EqualTo(1));

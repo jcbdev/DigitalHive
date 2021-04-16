@@ -1,12 +1,14 @@
 using DigitalHive.Api.Data;
 using DigitalHive.Api.Data.Models;
 using DigitalHive.Api.Data.Models.DAO;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalHive.Api.Controllers
 {
   [ApiController]
   [Route("[controller]")]
+  [EnableCors("CorsPolicy")]
   public class UsersController : ControllerBase
   {
     private IUserService _userService;
@@ -51,7 +53,7 @@ namespace DigitalHive.Api.Controllers
     [Route("clear")]
     public IActionResult ClearUsers(ClearUserRequest model)
     {
-      _userService.ClearUser(model.Username);
+      _userService.ClearUser(model.username);
 
       return Ok();
     }

@@ -4,6 +4,8 @@ import { register as registerService, login as loginService, logout as logoutSer
 export type UserContextProps = {
   user: User | null;
   register: (username: string, password: string, role: string) => Promise<User>;
+  login: (username: string, password: string) => Promise<User>;
+  logout: () => void;
 }
 
 export type User = {
@@ -24,16 +26,16 @@ export const UserProvider: React.FC<{}> = ({children}) => {
 
   const register = async (username: string, password: string, role: string): Promise<User> => {
     let response = await registerService(username, password, role);
-    if (response.status !== 200) throw new Error('Could not register user');
-    setUser(response.data);
-    return response.data;
+    if (response.message) throw new Error('Could not register user');
+    return response;
   }
 
   const login = async (username: string, password: string): Promise<User> => {
     let response = await loginService(username, password);
-    if (response.status !== 200) throw new Error('Could not login');
-    setUser(response.data);
-    return response.data;
+    console.log(response)
+    if (response.message) throw new Error('Could not login');
+    setUser(response);
+    return response;
   }
 
   const logout = (): void => {
@@ -44,7 +46,9 @@ export const UserProvider: React.FC<{}> = ({children}) => {
   const values: UserContextProps = useMemo(
     () => ({
       user,
-      register
+      register,
+      login,
+      logout
     }),
     [
       user

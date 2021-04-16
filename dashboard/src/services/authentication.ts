@@ -1,7 +1,7 @@
 import axios from "axios";
 import https from 'https';
 
-const API_URL = "http://localhost:5000/Users/";
+const API_URL = "https://localhost:5001/Users/";
 
 const instance = axios.create({
   httpsAgent: new https.Agent({  
@@ -14,12 +14,16 @@ export const register = async (username: string, password: string, role:string) 
     username,
     password,
     role
+  }).then((response) => {
+    return response.data;
   });
 };
 
 export const clearuser = async (username: string) => {
   return instance.post(API_URL + "clear", {
     username,
+  }).then((response) => {
+    return response.data;
   });
 };
 
