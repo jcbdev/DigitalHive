@@ -17,11 +17,11 @@ db-down:
 
 setup:
 	cd api && dotnet restore
-	cd ../dashboard && yarn
-	cd ../etl-jobs
-	python3 -m venv .venv
-	source ./.venv/bin/activate
-	pip install -r requirements.txt
+	cd dashboard && yarn
+	cd etl-jobs && \
+		python3 -m venv .venv && \
+		source ./.venv/bin/activate && \
+		pip install -r requirements.txt
 
 test:
 	killall -9 dotnet || true
