@@ -17,6 +17,7 @@ db-down:
 
 setup:
 	cd api && dotnet restore
+	cd api/DigitalHive.Api && dotnet ef database update
 	cd dashboard && yarn
 	cd etl-jobs && \
 		python3 -m venv .venv && \
