@@ -57,6 +57,7 @@
     "jest-resolve": "26.6.0",
     "jest-watch-typeahead": "0.6.1",
     "mini-css-extract-plugin": "0.11.3",
+    "moment": "^2.29.1",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
     "postcss-flexbugs-fixes": "4.2.1",
@@ -65,6 +66,7 @@
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "5.0.2",
     "prompts": "2.4.0",
+    "randomcolor": "^0.6.2",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
@@ -102,7 +104,9 @@
       "jest": true,
       "jest/globals": true
     },
-    "plugins": ["jest"]
+    "plugins": [
+      "jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -119,6 +123,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.13.15",
     "@types/jasmine": "^3.6.9",
+    "@types/randomcolor": "^0.5.5",
     "@types/react-router-dom": "^5.1.7",
     "ts-jest": "^26.5.5"
   }

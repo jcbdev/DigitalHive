@@ -22,7 +22,7 @@ export const getCommodityModels = async (model: string | null = null, commodity:
   const user = getCurrentUser();
   //TODO: Add user.token to Auth bearer header for JWT Auth
   return instance.get(API_URL + "models", {
-    data: {
+    params: {
       model, commodity
     }
   }).then((response) => {

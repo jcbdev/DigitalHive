@@ -28,17 +28,13 @@ const AvailableRoutes = () => {
               </>
             )}
             {user && (<> 
-              <Route path="/dashboard" component={TheLayout} />
-              <Route exact path="/" component={TheLayout} />
-              <Route >
+              <Route component={TheLayout} />
+              {/* <Route exact path="/" component={TheLayout} /> */}
+              {/* <Route >
                 <Redirect to="/dashboard" />
-              </Route> 
+              </Route>  */}
               </>
             )}
-            {/* <Route exact path="/register" name="Register Page" render={props => <Register {...props}/>} />
-            <Route exact path="/404" name="Page 404" render={props => <Page404 {...props}/>} />
-            <Route exact path="/500" name="Page 500" render={props => <Page500 {...props}/>} />
-            <Route path="/" name="Home" render={props => <TheLayout {...props}/>} /> */}
           </Switch>
         </React.Suspense>
     </HashRouter>

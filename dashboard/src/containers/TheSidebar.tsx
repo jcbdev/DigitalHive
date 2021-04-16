@@ -15,8 +15,10 @@ import CIcon from '@coreui/icons-react'
 
 // sidebar nav config
 import navigation from './_nav'
+import { useUser } from '../providers/UserProvider'
 
 const TheSidebar = () => {
+  const { user } = useUser();
   const show = true
 
   return (
@@ -39,7 +41,7 @@ const TheSidebar = () => {
       <CSidebarNav>
 
         <CCreateElement
-          items={navigation}
+          items={(navigation as any)[user?.role ?? 'Developer'] as any}
           components={{
             CSidebarNavDivider,
             CSidebarNavDropdown,
