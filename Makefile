@@ -30,7 +30,7 @@ test:
 	cd api/DigitalHive.Api && dotnet run &
 	sleep 5
 	cd dashboard && JEST_JASMINE=1 yarn jest
-	cd etl-jobs && pytest
+	cd etl-jobs && source ./.venv/bin/activate && pytest
 	killall -9 dotnet || true
 
 etls:
